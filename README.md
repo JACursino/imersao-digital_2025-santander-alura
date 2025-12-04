@@ -10,7 +10,9 @@ Este repositório reúne todos os projetos, desafios, anotações e materiais co
 Ao longo do programa, completei 9 cursos e 65 horas de formação, cobrindo os fundamentos essenciais para desenvolvimento Mobile, lógica e boas práticas de programação.
 
 ### 🧩 Tecnologias e Ferramentas
-<p align="left"> <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" /> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" /> <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" /> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /> <img src="https://img.shields.io/badge/Terminal-000000?style=for-the-badge&logo=powershell&logoColor=white" /> <img src="https://img.shields.io/badge/Alura-13293D?style=for-the-badge&logo=alura&logoColor=white" /> </p>
+
+![My Skills](https://skillicons.dev/icons?i=js,git,github,dart,vscode)
+
 
 ### 🗂️ Estrutura da Imersão
 
