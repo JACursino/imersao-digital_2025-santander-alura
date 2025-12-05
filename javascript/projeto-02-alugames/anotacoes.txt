@@ -1,0 +1,67 @@
+Outras formas de executar as ações esperadas, sugestões de orientadores ou outros alunos
+
+por MARINALDO LARANJEIRA DE SOUZA
+function alterarStatus(id) {
+    // Obtém o elemento do jogo específico pelo ID
+    const item = document.getElementById(`game-${id}`);
+
+    // Seleciona o botão dentro do item do jogo
+    const button = item.querySelector(".dashboard__item__button");
+
+    // Seleciona o contêiner da imagem do jogo
+    const imgContainer = item.querySelector(".dashboard__item__img");
+
+    // Verifica se o jogo está disponível para aluguel ou já foi alugado
+    if (button.textContent === "Alugar") {
+        // Altera o texto do botão para "Devolver"
+        button.textContent = "Devolver";
+
+        // Define a cor do botão para preto
+        button.style.backgroundColor = "black";
+        button.style.color = "white";
+
+        // Adiciona a classe que indica que o jogo está alugado
+        imgContainer.classList.add("dashboard__item__img--rented");
+    } else {
+        // Solicita confirmação antes de devolver o jogo
+        const confirmacao = confirm("Tem certeza de que deseja devolver este jogo?");
+        if (!confirmacao) {
+            return;
+        }
+
+        // Altera o texto do botão de volta para "Alugar"
+        button.textContent = "Alugar";
+
+        // Define a cor do botão para um azul mais claro
+        button.style.backgroundColor = "#ADD8E6";
+        button.style.color = "black";
+
+        // Remove a classe que indica que o jogo está alugado
+        imgContainer.classList.remove("dashboard__item__img--rented");
+    }
+}
+
+por Rafael Messina Boldrini
+function alterarStatus(gameId) {
+    const botao = document.getElementById(`game-${gameId}`).querySelector('.dashboard__item__button');
+    const imagensJogos = document.querySelectorAll(`#game-${gameId} .dashboard__item__img`);
+
+    const estaAlugado = botao.innerHTML === 'Devolver';
+    botao.innerHTML = estaAlugado ? 'Alugar' : 'Devolver';
+    botao.classList.toggle("dashboard__item__button--return", !estaAlugado);
+    imagensJogos.forEach(imagem => imagem.classList.toggle("dashboard__item__img--rented", !estaAlugado));
+}
+
+Mudanças Realizadas:
+Uso de Template Strings: Primeiro, corrigi o uso de template strings para a interpolação de gameId. As template strings no JavaScript são delimitadas por crases (` `) ao invés de aspas, permitindo a inserção de variáveis e expressões dentro de strings usando ${}.
+
+Operador Ternário: Utilizei o operador ternário para alternar o texto do botão. Isso reduz a necessidade de um bloco if...else explícito, tornando o código mais limpo.
+
+Método .toggle com Segundo Parâmetro: Para alternar as classes, usei o método .toggle no classList dos elementos, que permite não apenas adicionar ou remover uma classe, mas também controlar essa adição/remoção através de um segundo parâmetro booleano. Esse parâmetro é verdadeiro para adicionar a classe (ou manter se já estiver adicionada) e falso para remover (ou manter removida). Isso elimina a necessidade de dois blocos separados if e else if para adicionar e remover as classes.
+
+Benefícios da Simplificação:
+Redução de Repetição de Código: Ao eliminar blocos if...else redundantes e utilizar operações condicionais mais compactas, o código fica mais fácil de ler e manter.
+Facilidade na Manutenção: Com menos código repetitivo e uma lógica mais clara, futuras alterações (como mudar os nomes das classes ou o texto dos botões) podem ser feitas em menos pontos, reduzindo o risco de erros.
+Uso Eficiente de Recursos do JavaScript: Aproveitar recursos da linguagem, como template strings e o segundo parâmetro do método .toggle, permite escrever código mais idiomático e eficiente.
+Esta versão simplificada mantém a mesma funcionalidade, mas de uma forma que aproveita melhor as capacidades do JavaScript para tornar o código mais limpo e fácil de entender.
+
