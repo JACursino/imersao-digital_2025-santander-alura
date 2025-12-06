@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo do Número Secreto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-wrapper"> <!-- Para o fundo e centralização do tablet/tela -->
+        <div class="game-screen">
+            <header class="game-header"> <!---Cabeçalho do Jogo: A parte superior com os corações, estrelas e o título.-->
+                <div class="top-bar">
+                    <div class="hearts">
+                        <img src="/img/coracao.png" alt="Vida">
+                        <img src="/img/coracao.png" alt="Vida">
+                        <img src="/img/coracao.png" alt="Vida">
+                    </div>
+                    <div class="stars">
+                        <img src="/img/estrela.png" alt="Estrela">
+                        <img src="/img/estrela.png" alt="Estrela">
+                        <img src="/img/estrela-vazia.png" alt="Estrela vazia">
+                    </div>
+                </div>
+                <h1 class="game-title"><img src="/img/titulo.png" alt="Título"></h1>
+                <button class="new-game-button">Novo Jogo</button>
+            </header>
+
+            <main class="game-content">
+                <div class="robot-area">
+                    <span class="bubble">Tente adivinhar!</span>
+                    <img src="robot.png" alt="Robô" class="robot-img">
+                </div>
+                <button class="chutar-button">CHUTAR!</button>
+                <img src="rocket.png" alt="Foguete" class="rocket-img">
+            </main>
+
+            <footer class="game-footer">
+                <div class="info-group">
+                    <div class="item">
+                        <span class="label">TENTATIVAS:</span> <span class="value">07/IX</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">PONTOS:</span> <span class="value">450!</span>
+                    </div>
+                </div>
+                <div class="bottom-controls">
+                    <div class="temperature-bar">Muito Quente!</div>
+                    <div class="timer">00:17:342</div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
