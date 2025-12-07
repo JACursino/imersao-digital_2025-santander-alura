@@ -1,0 +1,14 @@
+// exibição de quantidade de ingressos e atualização do estoque de ingressos
+function atualizarEstoque(tipo, quantidade) {
+    if (tipo === 'qtd-pista') {
+        const novoEstoque = parseInt(pista.textContent) - quantidade;
+        pista.textContent = novoEstoque;
+    } else if (tipo === 'qtd-superior') {
+        const novoEstoque = parseInt(superior.textContent) - quantidade;
+        superior.textContent = novoEstoque;
+    } else if (tipo === 'qtd-inferior') {
+        const novoEstoque = parseInt(inferior.textContent) - quantidade;
+        inferior.textContent = novoEstoque;
+        }
+}
+/*fim da logica de compra de ingressos*/

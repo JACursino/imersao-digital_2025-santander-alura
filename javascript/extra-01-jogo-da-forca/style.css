@@ -1,0 +1,381 @@
+/* Configurações Globais e Fontes */
+:root {
+    --color-background-desert: #f6e6b5; /* Areia clara */
+    --color-primary-brown: #614b37; /* Marrom escuro (Madeira) */
+    --color-secondary-gold: #c98e15; /* Ouro/Dourado rústico */
+    --color-accent-red: #a42c2c; /* Bandana e erro */
+    --font-western: 'Rye', cursive;
+    --font-title: 'Metal Mania', cursive;
+}
+
+body {
+    background-color: var(--color-background-desert);
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-western), sans-serif;
+    color: var(--color-primary-brown);
+}
+
+/* Estrutura Principal (Grid) - Modificado */
+.game-container {
+    /* Centraliza o contêiner na tela */
+    margin: 20px auto;
+    /* Limita o tamanho máximo do jogo em telas grandes */
+    max-width: 960px;
+    max-height: 630px;
+    /* Define o layout de duas colunas (25% para painel, 75% para cenário) */
+    display: grid;
+    grid-template-columns: 20% 80%;
+    /* min-height ajustado para a nova margem/tamanho máximo */
+    min-height: calc(100vh - 40px); /* 100% da tela menos a margem superior/inferior */
+    box-shadow: 0 0 20px rgba(238, 163, 3, 0.5);
+    border: 5px solid var(--color-primary-brown); /* Adiciona uma borda temática ao jogo */
+    border-radius: 30px;
+    overflow: hidden; /* Garante que nada saia da borda */
+}
+
+/* -------------------- PAINEL DE CONTROLE (ESQUERDA) -------------------- */
+/* O painel de controle (20% de largura) precisa de ajustes internos: */
+.control-panel {
+    /*background-image: url(imagens/menumadeira.png);*/
+    background-size: cover; /* Manter estilos de fundo, mas remover a largura fixa/móvel */
+    background-color: var(--color-primary-brown); /* Fundo de madeira escura */
+    color: white;
+    padding: 5px 10px; /* Reduzindo um pouco o padding lateral */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Reduzindo o espaçamento */
+    border-right: 5px solid var(--color-secondary-gold);
+}
+
+/* Logo */
+.game-logo {
+
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.3);
+
+}
+
+.game-logo {
+    /* 1. Definir as dimensões da imagem do logo */
+    width: 175px; /* Largura base do logo */
+    height: 175px; /* Altura base do logo (ajuste conforme a proporção) */
+    margin: 0 auto 15px auto; /* Centraliza o bloco na barra lateral e adiciona margem inferior */
+
+    /* 2. Referenciar a imagem do logo */
+    background-image: url('imagens/logoforca1.png');
+    background-size: contain; /* Garante que a imagem caiba inteira no contêiner */
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+/* Regra para esconder o texto, caso você mantenha ele no HTML */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Inputs e Botões Gerais */
+.input-area, .action-buttons, .status-board {
+    background-color: #4a342d;  /*Madeira um pouco mais clara que o fundo */
+
+    padding: 15px;
+    border: 3px solid #7d654f;
+    border-radius: 5px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.input-area label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+#guess-input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: monospace;
+    text-transform: uppercase;
+    border: 3px solid var(--color-secondary-gold);
+    background-color: #f7f3e8;
+    color: var(--color-primary-brown);
+    margin-right: 10px;
+}
+
+.western-button {
+    background-color: var(--color-accent-red);
+    color: white;
+    border: 3px solid #801d1d;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-family: var(--font-western);
+    font-size: 1em;
+    text-shadow: 1px 1px 0 #000;
+    box-shadow: 3px 3px 0 #000;
+    transition: all 0.1s;
+}
+
+.western-button:hover {
+    background-color: #c03d3d;
+    box-shadow: 1px 1px 0 #000;
+}
+
+.western-button.large {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Placar de Status */
+.status-board h3 {
+    margin: 5px 0;
+    font-size: 1em;
+    color: var(--color-secondary-gold);
+}
+
+#used-letters {
+    font-family: monospace;
+    word-break: break-all;
+    min-height: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+}
+
+#error-count {
+    font-size: 1.5em;
+    color: var(--color-accent-red);
+    text-shadow: 1px 1px 0 #000;
+}
+
+/* Botão de Configurações */
+.settings-button {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    font-size: 1em;
+    margin-top: auto; /* Empurra para o final */
+}
+
+.settings-button .gear-icon {
+    margin-right: 5px;
+}
+
+
+/* -------------------- ÁREA DE JOGO (CENÁRIO) -------------------- */
+.game-area {
+    /*background-image: url('imagens/cenario.png'); /* Sua imagem cenario.jpg */
+    background-size: cover;
+    background-position: center bottom;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Banner de Dica */
+.hint-banner {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background-color: #fff8e1; /* Papel amarelado */
+    border: 5px solid var(--color-primary-brown);
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.4);
+    transform: rotate(3deg); /* Inclinação de cartaz */
+    z-index: 10; /* Garante que fique sobre outros elementos se houver sobreposição */
+    width: 250px; /* Largura fixa para manter o formato de cartaz */
+}
+
+.hint-banner h2 {
+    font-family: var(--font-title);
+    font-size: 1.5em;
+    color: var(--color-accent-red);
+    margin: 5px 0 0 0;
+}
+
+.hint-banner p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* Display da Forca */
+.hangman-display {
+    flex-grow: 1; /* Ocupa o espaço central */
+    display: flex;
+    align-items: flex-end; /* Posiciona a forca na parte de baixo do espaço */
+    padding-bottom: 100px; /* Espaço para o painel da palavra */
+}
+
+#gallows {
+    position: relative;
+    width: 300px; /* Largura da forca */
+    height: 300px;
+}
+
+.forca-img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: auto;
+}
+
+/* O Caubói (Esconder por padrão e mostrar via JS/CSS) */
+#cowboy-figure {
+    position: absolute;
+    top: 50px; /* Ajuste a posição inicial */
+    left: 50%;
+    transform: translateX(-50%);
+    /* ... o CSS para mostrar/esconder partes via classes virá depois ... */
+}
+
+/* Painel da Palavra Secreta */
+.word-panel {
+    position: absolute;
+    bottom: 20px;
+    width: 90%;
+    max-width: 700px;
+    /*background-image: url('imagens/tabuamadeira.png'); /* Você precisará de uma imagem de placa rústica */
+    background-size: cover;
+    background-position: center;
+    padding: 20px 40px;
+    text-align: center;
+}
+
+.panel-title {
+    font-family: var(--font-title);
+    font-size: 2em;
+    color: #ffd700; /* Ouro */
+    text-shadow: 3px 3px 0 var(--color-primary-brown);
+    margin-bottom: 10px;
+}
+
+.word-display-lines {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.letter-line {
+    font-size: 2.5em;
+    font-family: monospace;
+    border-bottom: 4px solid var(--color-primary-brown);
+    padding: 0 5px;
+    min-width: 20px; /* Garante que o traço não seja muito estreito */
+}
+
+/* ========================================================= */
+/* MEDIA QUERIES (RESPONSIVIDADE)          */
+/* ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. Mudar o layout para uma única coluna (empilhado) */
+    .game-container {
+        grid-template-columns: 1fr; /* 100% de largura para cada elemento */
+        margin: 0;
+        max-width: 100%;
+        max-height: initial;
+        min-height: 100vh;
+        border: none;
+        border-radius: 0;
+    }
+
+    /* 2. Ajustar o Painel de Controle (agora no topo) */
+    .control-panel {
+        /* Ocupa a largura total e reduz o padding/gap */
+        width: 100%;
+        padding: 15px 10px;
+        gap: 15px;
+        border-right: none;
+        border-bottom: 5px solid var(--color-secondary-gold);
+    }
+
+    /* 3. Ajustar o layout interno do painel para otimizar espaço */
+    .action-buttons {
+        display: flex; /* Coloca os botões 'Chutar' e 'Limpar' lado a lado */
+        gap: 10px;
+    }
+
+    .western-button.large {
+        width: 50%; /* Faz com que os botões dividam o espaço */
+        margin-top: 0;
+    }
+
+    /* 4. Ajustar a Área de Jogo (agora na parte de baixo) */
+    .game-area {
+        height: 500px; /* Limita a altura do cenário em telas pequenas */
+        padding-top: 50px;
+        padding-bottom: 120px;
+    }
+
+    /* 5. Ajustar a posição da Dica para não atrapalhar a forca */
+    .hint-banner {
+        top: 10px;
+        right: 10px;
+        font-size: 0.8em;
+    }
+
+    /* 6. Aumentar o tamanho do painel da palavra para ser legível */
+    .word-panel {
+        width: 90%;
+        padding: 15px 30px;
+        bottom: 10px;
+    }
+
+    .letter-line {
+        font-size: 2em; /* Reduz o tamanho da fonte da letra */
+    }
+}
+
+/* ========================================================= */
+/* 🔧 MODO DEBUG VISUAL - ajuda a ver limites e espaçamentos */
+/* ========================================================= */
+
+.debug * {
+  outline: 1px dashed rgba(255, 0, 0, 0.4); /* Mostra o contorno dos elementos */
+}
+
+.debug .game-container {
+  outline: 2px solid rgba(0, 128, 255, 0.6);
+}
+
+.debug .control-panel {
+  outline: 2px solid rgba(0, 255, 0, 0.6);
+}
+
+.debug .game-area {
+  outline: 2px solid rgba(255, 128, 0, 0.6);
+}
+
+.debug .word-panel {
+  outline: 2px solid rgba(255, 255, 0, 0.8);
+}
+
+.debug .hint-banner {
+  outline: 2px solid rgba(255, 0, 255, 0.8);
+}
+
+/* Opcional: leve transparência no fundo para ver espaços */
+.debug .control-panel,
+.debug .game-area,
+.debug .word-panel {
+  background-color: rgba(0, 255, 255, 0.05);
+}

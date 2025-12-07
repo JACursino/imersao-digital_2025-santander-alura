@@ -1,0 +1,22 @@
+# Dart/Pub related
+.dart_tool/
+.packages
+pubspec.lock
+build/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# System files
+.DS_Store
+*.log
+
+lib/
+
+# API Keys e secrets
+**/api_key.dart
+**/*_key.dart
+.env
+*.env
